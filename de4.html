@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FPT Polytechnic - Đề thi 04</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrapper" id="trang-chu">
+
+  <header class="header">
+    <a class="logo" href="#trang-chu"><img src="img/logotrang.png" alt="FPT Polytechnic"></a>
+    <form class="search" id="searchForm" novalidate>
+      <input type="text" id="keyword" name="keyword" aria-label="Từ khóa tìm kiếm">
+      <button type="submit">Tìm kiếm</button>
+      <span class="error" id="searchMsg"></span>
+    </form>
+  </header>
+
+  <div class="banner" id="tuyen-sinh"><a href="#"><img src="img/banner.png" alt="Cuộc thi ảnh Mr & Ms K18"></a></div>
+
+  <nav class="menu">
+    <ul>
+      <li><a href="#trang-chu">Trang chủ</a></li>
+      <li><a href="#tuyen-sinh">Tuyển sinh</a></li>
+      <li><a href="#chuong-trinh-dao-tao">Chương trình đào tạo</a></li>
+      <li><a href="#goc-sinh-vien">Góc sinh viên</a></li>
+      <li><a href="#tuyen-dung">Tuyển dụng</a></li>
+    </ul>
+  </nav>
+
+  <h2 class="section-title" id="chuong-trinh-dao-tao">TIN MỚI NHẤT</h2>
+  <section class="news" id="goc-sinh-vien">
+
+    <article class="card">
+      <div class="main">
+        <a href="#"><img src="img/row1.png" alt="Hoa Nhân"></a>
+        <a class="news-title" href="#">Sự kiện văn hóa nghệ thuật Hoa Nhân</a>
+      </div>
+      <div class="item">
+        <a href="#"><img src="img/row2.png" alt="DJ Wukong"></a>
+        <a class="t" href="#">DJ Wukong – Hotboy Người Ấy Là Ai” xác nhận sẽ tham gia !Happy Bee 12</a>
+      </div>
+      <div class="item">
+        <a href="#"><img src="img/row3.png" alt="Happy Bee 12"></a>
+        <a class="t" href="#">Chuỗi nhạc hội Happy Bee đến với cộng đồng sinh viên</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="main">
+        <a href="#"><img src="img/row1.png" alt="Hoa Nhân"></a>
+        <a class="news-title" href="#">Sự kiện văn hóa nghệ thuật Hoa Nhân</a>
+      </div>
+      <div class="item">
+        <a href="#"><img src="img/row2.png" alt="DJ Wukong"></a>
+        <a class="t" href="#">DJ Wukong – Hotboy Người Ấy Là Ai” xác nhận sẽ tham gia !Happy Bee 12</a>
+      </div>
+      <div class="item">
+        <a href="#"><img src="img/row3.png" alt="Happy Bee 12"></a>
+        <a class="t" href="#">Chuỗi nhạc hội Happy Bee đến với cộng đồng sinh viên</a>
+      </div>
+    </article>
+
+  </section>
+
+  <footer class="footer" id="tuyen-dung">Vũ Hoàng Long</footer>
+</div>
+
+<script>
+
+  const form = document.getElementById('searchForm');
+  const input = document.getElementById('keyword');
+  const msg = document.getElementById('searchMsg');
+
+  function validate(){
+    const v = input.value.trim();
+    if(v === '') return 'Vui lòng nhập từ khóa tìm kiếm.';
+    if(v.length < 2) return 'Từ khóa phải có ít nhất 2 ký tự.';
+    if(v.length > 50) return 'Từ khóa không được dài quá 50 ký tự.';
+    if(/[<>{}\[\]\\\/$%^*=+|~`]/.test(v)) return 'Từ khóa chứa ký tự không hợp lệ.';
+    return '';
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const err = validate();
+    msg.classList.remove('ok');
+    if(err){
+      msg.textContent = err;
+      input.classList.add('invalid');
+      input.focus();
+    }else{
+      input.classList.remove('invalid');
+      msg.textContent = 'Đang tìm: "' + input.value.trim() + '"';
+      msg.classList.add('ok');
+    }
+  });
+
+  input.addEventListener('input', function(){
+    input.classList.remove('invalid');
+    msg.textContent = '';
+  });
+</script>
+</body>
+</html>
